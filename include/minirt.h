@@ -23,10 +23,11 @@
 
 /* 2. DEFINES & KEYCODES */
 # define ESC 65307
-# define ESC_1 53
-# define KEY_C 99
 
 # define EPSILON 1e-6
+
+# define VEC_INVALID 1
+# define VEC_NOT_NORMALIZED 2
 
 /* 3. STRUCTURES */
 

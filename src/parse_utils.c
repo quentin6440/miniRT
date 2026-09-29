@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
+#include "math.h"
 
 int	ft_str_to_float(char *str, double *out)
 {
@@ -45,23 +46,21 @@ int	ft_str_to_vec3(char *str, t_vec3 *vec, int is_dir)
 	char	**parts;
 
 	if (!str || !vec)
-		return (1);
+		return (VEC_INVALID);
 	parts = ft_split(str, ',');
 	if (!parts || !parts[0] || !parts[1] || !parts[2] || parts[3])
-		return (ft_free_tab(parts), 1);
+		return (ft_free_tab(parts), VEC_INVALID);
 	if (ft_str_to_float(parts[0], &vec->x) != 0
 		|| ft_str_to_float(parts[1], &vec->y) != 0
 		|| ft_str_to_float(parts[2], &vec->z) != 0)
-		return (ft_free_tab(parts), 1);
+		return (ft_free_tab(parts), VEC_INVALID);
 	ft_free_tab(parts);
 	if (is_dir)
 	{
-		if (vec->x < -1.0 || vec->x > 1.0
-			|| vec->y < -1.0 || vec->y > 1.0
-			|| vec->z < -1.0 || vec->z > 1.0)
-			return (1);
 		if (vec->x == 0.0 && vec->y == 0.0 && vec->z == 0.0)
-			return (1);
+			return (VEC_INVALID);
+		if (fabs(vec_length(*vec) - 1.0) > EPSILON)
+			return (VEC_NOT_NORMALIZED);
 	}
 	return (0);
 }

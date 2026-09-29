@@ -6,7 +6,7 @@
 /*   By: qcyril-a <qcyril-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 18:11:34 by qcyril-a          #+#    #+#             */
-/*   Updated: 2026/09/28 18:11:37 by qcyril-a         ###   ########.fr       */
+/*   Updated: 2026/09/29 11:20:21 by qcyril-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,18 @@ static int	ft_fill_sphere(t_obj *obj, char **tokens,
 static int	ft_fill_plane(t_obj *obj, char **tokens,
 		t_parse_error *error)
 {
+	int	result;
+
 	if (!tokens || !tokens[1] || !tokens[2]
 		|| !tokens[3] || tokens[4])
 		return (ft_parse_fail(error, "invalid plane format"));
 	if (ft_str_to_vec3(tokens[1], &obj->pos, 0) != 0)
 		return (ft_parse_fail(error, "invalid plane position"));
-	if (ft_str_to_vec3(tokens[2], &obj->dir, 1) != 0)
+	//if (ft_str_to_vec3(tokens[2], &obj->dir, 1) != 0)
+	result = ft_str_to_vec3(tokens[2], &obj->dir, 1);
+	if (result == VEC_NOT_NORMALIZED)
+		return (ft_parse_fail(error, "plane direction is not normalized"));
+	if (result != 0)
 		return (ft_parse_fail(error, "invalid plane direction"));
 	obj->dir = vec_normalize(obj->dir);
 	if (ft_str_to_color(tokens[3], &obj->color) != 0)
@@ -66,13 +72,19 @@ static int	ft_fill_plane(t_obj *obj, char **tokens,
 static int	ft_fill_cylinder(t_obj *obj, char **tokens,
 		t_parse_error *error)
 {
+	int result;
+	
 	if (!tokens || !tokens[1] || !tokens[2]
 		|| !tokens[3] || !tokens[4]
 		|| !tokens[5] || tokens[6])
 		return (ft_parse_fail(error, "invalid cylinder format"));
 	if (ft_str_to_vec3(tokens[1], &obj->pos, 0) != 0)
 		return (ft_parse_fail(error, "invalid cylinder position"));
-	if (ft_str_to_vec3(tokens[2], &obj->dir, 1) != 0)
+	//if (ft_str_to_vec3(tokens[2], &obj->dir, 1) != 0)
+	result = ft_str_to_vec3(tokens[2], &obj->dir, 1);
+	if (result == VEC_NOT_NORMALIZED)
+		return (ft_parse_fail(error, "plane direction is not normalized"));
+	if (result != 0)
 		return (ft_parse_fail(error, "invalid cylinder direction"));
 	obj->dir = vec_normalize(obj->dir);
 	if (ft_str_to_float(tokens[3], &obj->diameter) != 0)

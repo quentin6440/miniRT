@@ -6,7 +6,7 @@
 /*   By: qcyril-a <qcyril-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:00:00 by quentin           #+#    #+#             */
-/*   Updated: 2026/09/28 18:58:52 by qcyril-a         ###   ########.fr       */
+/*   Updated: 2026/09/29 11:18:40 by qcyril-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	key_handler(int key, void *param)
 {
-	if (key == ESC || key == ESC_1)
+	if (key == ESC)
 		ft_clean_exit(param);
 	return (0);
 }
