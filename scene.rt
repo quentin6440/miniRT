@@ -1,0 +1,26 @@
+ # Lumiere ambiante
+A 0.15 255,255,255
+
+# Camera plus haute et plus proche
+C 0.0,3.5,-5.5 0.0,-0.25,1.0 70
+
+# Lumiere principale
+L -4.0,7.0,-3.0 0.85 255,255,255
+
+# Sol
+pl 0.0,-1.5,0.0 0.0,1.0,0.0 45,120,65
+
+# Sphere rouge au centre
+sp 0.0,0.0,4.5 2.5 220,35,35
+
+# Cylindre bleu a gauche de l'image
+cy -2.8,0.0,5.5 0.0,1.0,0.0 1.8 3.5 35,90,220
+
+# Cylindre jaune a droite de l'image
+cy 2.8,0.0,5.5 0.0,1.0,0.0 1.8 3.5 230,180,35
+
+# Petite sphere verte en arriere
+sp 0.0,1.0,8.0 1.4 35,190,90
+
+# Cylindre horizontal en profondeur
+cy 0.0,0.0,9.0 1.0,0.0,0.0 1.5 4.0 170,60,190
