@@ -6,7 +6,7 @@
 /*   By: qcyril-a <qcyril-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 00:00:00 by quentin           #+#    #+#             */
-/*   Updated: 2026/09/29 11:14:11 by qcyril-a         ###   ########.fr       */
+/*   Updated: 2026/09/29 11:25:35 by qcyril-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,13 @@ int	ft_parse_camera(char **tokens, t_scene *scene,
 		t_parse_error *error)
 {
 	int	result;
-	
+
 	if (!tokens || !scene)
 		return (ft_parse_fail(error, "invalid camera data"));
 	if (!tokens[1] || !tokens[2] || !tokens[3] || tokens[4])
 		return (ft_parse_fail(error, "invalid camera format"));
 	if (ft_str_to_vec3(tokens[1], &scene->camera.pos, 0) != 0)
 		return (ft_parse_fail(error, "invalid camera position"));
-	//if (ft_str_to_vec3(tokens[2], &scene->camera.dir, 1) != 0)
 	result = ft_str_to_vec3(tokens[2], &scene->camera.dir, 1);
 	if (result == VEC_NOT_NORMALIZED)
 		return (ft_parse_fail(error, "camera direction is not normalized"));

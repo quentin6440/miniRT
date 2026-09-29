@@ -6,7 +6,7 @@
 /*   By: qcyril-a <qcyril-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/21 13:31:14 by qcyril-a          #+#    #+#             */
-/*   Updated: 2026/09/28 18:56:47 by qcyril-a         ###   ########.fr       */
+/*   Updated: 2026/09/29 11:33:33 by qcyril-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,8 @@ int		ft_parse_light(char **tokens, t_scene *scene,
 			t_parse_error *error);
 int		ft_parse_obj(char **tokens, t_scene *scene, t_type type,
 			t_parse_error *error);
+int		ft_parse_direction(char *str, t_vec3 *dir, t_parse_error *error,
+			const char *name);
 int		ft_parse_fail(t_parse_error *error, const char *message);
 void	ft_print_parse_error(const t_parse_error *error);
 

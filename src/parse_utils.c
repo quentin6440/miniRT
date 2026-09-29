@@ -6,12 +6,26 @@
 /*   By: qcyril-a <qcyril-a@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 18:16:40 by qcyril-a          #+#    #+#             */
-/*   Updated: 2026/09/28 18:16:48 by qcyril-a         ###   ########.fr       */
+/*   Updated: 2026/09/29 11:31:48 by qcyril-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minirt.h"
 #include "math.h"
+
+int	ft_parse_direction(char *str, t_vec3 *dir,
+		t_parse_error *error, const char *name)
+{
+	int	result;
+
+	result = ft_str_to_vec3(str, dir, 1);
+	if (result == VEC_NOT_NORMALIZED)
+		return (ft_parse_fail(error, name));
+	if (result != 0)
+		return (ft_parse_fail(error, "invalid object direction"));
+	*dir = vec_normalize(*dir);
+	return (0);
+}
 
 int	ft_str_to_float(char *str, double *out)
 {
